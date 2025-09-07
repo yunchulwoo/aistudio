@@ -29,7 +29,7 @@ const App: React.FC = () => {
     setGeneratedImageUrl(null);
 
     try {
-      const prompt = "제공된 사진을 바탕으로, 이 인물의 조금 더 어린 시절의 모습을 상상하여 전문적인 증명사진으로 재창조해주세요. 다음 지침을 엄격히 준수하세요: 1. 얼굴: 피부를 단순 보정하는 것을 넘어, 10대 후반에서 20대 초반의 모습처럼 자연스럽게 탱탱하고 탄력 있는 피부결로 재창조합니다. 미세한 주름을 제거하고 생기 넘치는 인상을 만들어주세요. 2. 헤어스타일: 현재의 기본 스타일을 유지하되, 더 젊고 트렌디한 느낌으로 세련되게 다듬습니다. 3. 배경: 전문 스튜디오에서 촬영한 것처럼 부드러운 오프화이트/옅은 회색 배경으로 교체합니다. 4. 결과물: 최종 결과물은 반드시 이미지만 포함해야 하며, 어떠한 텍스트나 대화도 추가하지 마십시오.";
+      const prompt = "가장 중요한 규칙: 원본 사진 속 인물의 눈매, 코, 입 등 고유한 얼굴 특징은 반드시 유지해주세요. 이 규칙을 최우선으로 지키면서, 원본 사진을 다음과 같은 스타일로 변환해주세요: 1. 분위기: 야간 도시 거리의 감성적인 분위기. 배경에 부드러운 보케 효과가 있는 조명. 2. 인물: 20대 초반의 젊고 자연스러운 모습. 3. 의상: 검은색 가죽 자켓. 4. 헤어: 길고 자연스러운 검은색 머리. 5. 결과물: 어떠한 텍스트 설명도 없이, 최종 결과 이미지만 생성해주세요.";
       const imageUrl = await generateIdPhoto(originalFile, prompt);
       setGeneratedImageUrl(imageUrl);
     } catch (err) {
@@ -65,11 +65,11 @@ const App: React.FC = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center w-full">
-                <h2 className="text-2xl font-bold text-cyan-400 mb-4">AI 생성 증명사진</h2>
+                <h2 className="text-2xl font-bold text-cyan-400 mb-4">AI 생성 프로필 사진</h2>
                 {isLoading ? (
                   <div className="w-full max-w-md aspect-square flex flex-col justify-center items-center bg-slate-800 rounded-2xl shadow-lg border-2 border-slate-700">
                     <Loader />
-                    <p className="mt-4 text-slate-400 text-center px-4">AI가 증명사진을 만들고 있어요...<br/>최대 1분 정도 소요될 수 있습니다.</p>
+                    <p className="mt-4 text-slate-400 text-center px-4">AI가 프로필 사진을 만들고 있어요...<br/>최대 1분 정도 소요될 수 있습니다.</p>
                   </div>
                 ) : generatedImageUrl ? (
                   <ResultDisplay imageUrl={generatedImageUrl} onReset={handleReset} />
@@ -90,7 +90,7 @@ const App: React.FC = () => {
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <span className="relative flex items-center">
-                    증명사진 생성하기
+                    프로필 사진 생성하기
                     <ArrowRightIcon className="ml-2 h-6 w-6 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </span>
                 </button>
@@ -102,7 +102,7 @@ const App: React.FC = () => {
         )}
       </main>
        <footer className="w-full text-center p-4 mt-auto text-slate-500">
-        <p>&copy; {new Date().getFullYear()} AI ID Photo Generator. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} AI Profile Photo Generator. All rights reserved.</p>
       </footer>
     </div>
   );
